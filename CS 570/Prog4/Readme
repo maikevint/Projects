@@ -1,0 +1,99 @@
+Please elaborate how you implement your FIFO and LRU replacement algorithm.
+You need to explain your design, not just paste source code here ... 
+
+Name: Kevin Mai
+CS 570 
+August 9, 2020
+Program 4
+README FILE
+
+GOAL: Simulate two different page replacement algorithms: First-in First-out(FIFO) and Least Recently Used(LRU).
+
+LOGIC: 
+vmalgorithm.h
+int j;	 
+	Is a global variable to hold the index of memory where the matching page frame is found
+int findPage();	
+	Is a function to search the memroy for a matching page frame and will return either 1 for found or -1
+	for not found
+
+vmalgorithm.c
+FIFO
+	Uses local variable count for page fault count and found for case where the page frame is in memory. 
+	A for loop for size of AccessPatternLength, first check if the page frame is in meory already and if it does print
+	the page frame and continue to next iteration. If not, increment the page fault count and remove first in first out.
+	At initialization, it starts at index 0 and increments for each page frame replacements. The nextToReplaced points to 
+	the next index for replacement by using the % operator with FrameNR for efficiency. The for loop ends with printing the 
+	page frame and the function ends by returning the number of page faults
+LRU
+	Uses local variable count for page fault count, found for case where the page frame is in memory, clock which increments
+	each time a memory reference is made. The array lru contains last time each index in the memory.PageFrameList was last used.
+	The function starts with initializing the lru array with -1 in each index. The function then goes on a for loop for size of 
+	AccessPatternLength, which first increments the clock. It then check to see if the page frame already exists in the memory.PageFrameList
+	and if found will then update the lru clocks and print the page frame. Else, then the page fault count increments and the functions looks
+	for the least recently used page frame to be replaced from memory.PageFrameList. The loop iteration ends by printing out the page frame.
+	And the LRU function will return the page faul count.
+	
+RESOURCES: 
+CS 570 Piazza coure readings, videos, and notes.
+
+
+RUNNING THE PROGRAM:
+make 				will generate ./testvm executable file
+make clean 			removes ./testvm executable file
+
+example:
+./testvm 7 3
+
+RESULTS:
+Running ./testvm [reference page range] [number of frames] displays the result to terminal.
+
+TEST RESULTS:
+testvm 7 3
+Running program using FIFO algorithm ... ...
+ 5 -1 -1
+ 5  2 -1
+ 5  2 -1
+ 5  2  0
+ 4  2  0
+ 4  6  0
+ 4  6  0
+ 4  6  0
+ 4  6  1
+ 3  6  1
+ 3  4  1
+ 3  4  5
+ 0  4  5
+ 0  4  5
+ 0  4  5
+ 0  6  5
+ 0  6  2
+ 0  6  2
+ 0  6  2
+ 1  6  2
+page fault of FIFO: 13
+
+
+The Same Access Pattern: 5 2 2 0 4 6 4 4 1 3 4 5 0 4 5 6 2 0 0 1
+Running program using LRU algorithm ... ...
+ 5 -1 -1
+ 5  2 -1
+ 5  2 -1
+ 5  2  0
+ 4  2  0
+ 4  6  0
+ 4  6  0
+ 4  6  0
+ 4  6  1
+ 4  3  1
+ 4  3  1
+ 4  3  5
+ 4  0  5
+ 4  0  5
+ 4  0  5
+ 4  6  5
+ 2  6  5
+ 2  6  0
+ 2  6  0
+ 2  1  0
+page fault of LRU: 13

@@ -1,0 +1,117 @@
+Name: Kevin Mai
+CS 570 
+July 8, 2020
+Program 0
+README FILE
+
+GOAL: 
+To count the frequency of each alphabet letter (A-Za-z, total 52 casesensitive) and five special characters
+ (‘.’, ‘,’, ‘:’, ‘;’ and ‘!’) in all the .txt files under a given directory of the given path and write the 
+results to a file named as filetowrite.
+
+LOGIC: 
+Both alphabetcount.c and specialcharcount.c files are similar to each other in several aspects. They share 
+the same code for opening the directory to the given path for reading and search for the .txt extension files. 
+They store the results in a filelist set to a maxfiles size of 1000 as the instructor stated the max number of files in
+the dataset would be under a 1000. The second parameter is the string size set at 30 based on the given data file name 
+sizes and to give some extra room for longer names. If dataset file names are longer than 30 then the program will fail 
+to store the name of the file. At that point, the only way is to increment the string size limit to a reasonble number 
+based on the the dataset. This part is based on the assumption the dataset file names will be kept in a similar naming 
+convention used in the given data folder. After all the files in the directory data is check for the directory path is 
+then closed to save resources. The programs then open a stream to each file name after appending the filelist contents 
+to a string containing the right path. The program then reads the file and checks for characters. In alphabetcount, 
+the program will start the next iteration if is not an alphabet letter. It will then check if it is an uppercase and 
+store it in the alphabetfreq[] passed to it. 
+
+alphabetfreq[ch - 65]++;  and alphabetfreq[ch - 71]++;
+
+is used for efficieny as the char value is used to increment the count in the corresponding spot in the array. 'A' has 
+the value of 65 and needs to be at [0] so subtracting it by 65 will place it in the right spot. 'a' has a value of 97 and 
+needs to be at [26] so this time it needs to be subtracted by 71 to be in the right spot. For specialcharcount. The same 
+strategy cannot be used due to the different char values and since there are only 5 special characters, it is simpler to 
+just test for each one and incrementing the count for their respective array element in charfreq. The file is then closed
+before the iteration to save resources. A stream is then opened to the filetowrite parameter in the results directory to 
+the program respective result and special result. fprinf format is used to write the results in the format of 
+"letter -> frequency" for alphabetcount.c and "character -> frequency" for specialcharcount.c
+as specified.
+
+
+RUNNING THE PROGRAM:
+make 			// will generate testalphabet and testspecial executable files
+make testalphabet	// generate testalphabet executable file
+make testspecial	// generate testspecial executable file
+./testalphabet		// run the testalphabet program to count frequency of alphabet
+			letters, the result will be stored in the file result.txt under result folder
+./testspecial		// run the testspecial program to count frequency of
+			special characgters, the result will be stored in the file specialresult.txt
+			under result folder.
+make clean 		removes testalphabet and testspecial executable files	
+
+RESULTS:
+Running the ./testspecial and ./testalphabet will display the results in terminal. Results are also found in 
+result folder where result.txt contains the alphabet results and specialresult.txt contains the special
+results.
+
+
+TEST RESULTS:
+
+Special
+, -> 745668
+. -> 798072
+: -> 15708
+; -> 32340
+! -> 63228
+
+Alphabet
+A -> 111804
+B -> 62436
+C -> 18612
+D -> 22308
+E -> 27324
+F -> 14124
+G -> 13596
+H -> 128436
+I -> 164340
+J -> 6600
+K -> 4752
+L -> 29040
+M -> 170808
+N -> 33000
+O -> 33924
+P -> 57948
+Q -> 792
+R -> 8712
+S -> 108240
+T -> 133716
+U -> 7128
+V -> 2904
+W -> 83952
+X -> 0
+Y -> 37356
+Z -> 0
+a -> 2861232
+b -> 494472
+c -> 747252
+d -> 1764444
+e -> 4855752
+f -> 751212
+g -> 795696
+h -> 2689632
+i -> 2421936
+j -> 28512
+k -> 396660
+l -> 1699236
+m -> 880044
+n -> 2476320
+o -> 2732268
+p -> 504900
+q -> 27984
+r -> 2168364
+s -> 2357256
+t -> 3157968
+u -> 1008480
+v -> 273900
+w -> 1001088
+x -> 46860
+y -> 693396
+z -> 12936

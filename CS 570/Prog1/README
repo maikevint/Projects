@@ -1,0 +1,90 @@
+Name: Kevin Mai
+CS 570 
+July 19, 2020
+Program 1
+README FILE
+
+GOAL: 
+Fork two child processes running the two programs generated in programming zero in parallel.
+
+LOGIC: 
+The program firsts fork a child to do the testalphbet executable. It will first see if the fork works and exits if it doesn't
+If the fork works then the process is a child and will execvp to the executtable file testalphabet. Which also ends the 
+process. The parent will then fork a child to run the testspecial executable and will wait until the child alphabet complets to 
+print the required messsage. A similar manner in comparison to the child for testalphabet happens. Where the parent test the 
+program fails, the process tests if its the child for testspecial and will execvp the testspecial executable, or the parent
+will wait until the child special will complete and print out the required message.  
+
+RUNNING THE PROGRAM:
+make 				will generate mulproc executable files
+make clean 			removes mulproc executable files
+
+RESULTS:
+Running the mulproc executable will display the results of testalphabet and testspecial in terminal. Results are also found in 
+result folder where result.txt contains the alphabet results and specialresult.txt contains the special
+results.
+
+
+TEST RESULTS:
+
+CHILD <15154> process is executing testalphabet program
+CHILD <15155> process is executing testspecial program
+, -> 745668
+. -> 798072
+: -> 15708
+; -> 32340
+! -> 63228
+CHILD <15155> process has done with testspecial program! See the results above!
+A -> 111804
+B -> 62436
+C -> 18612
+D -> 22308
+E -> 27324
+F -> 14124
+G -> 13596
+H -> 128436
+I -> 164340
+J -> 6600
+K -> 4752
+L -> 29040
+M -> 170808
+N -> 33000
+O -> 33924
+P -> 57948
+Q -> 792
+R -> 8712
+S -> 108240
+T -> 133716
+U -> 7128
+V -> 2904
+W -> 83952
+X -> 0
+Y -> 37356
+Z -> 0
+a -> 2861232
+b -> 494472
+c -> 747252
+d -> 1764444
+e -> 4855752
+f -> 751212
+g -> 795696
+h -> 2689632
+i -> 2421936
+j -> 28512
+k -> 396660
+l -> 1699236
+m -> 880044
+n -> 2476320
+o -> 2732268
+p -> 504900
+q -> 27984
+r -> 2168364
+s -> 2357256
+t -> 3157968
+u -> 1008480
+v -> 273900
+w -> 1001088
+x -> 46860
+y -> 693396
+z -> 12936
+CHILD <15154> process has done with testalphabet program! See the results above!

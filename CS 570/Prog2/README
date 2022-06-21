@@ -1,0 +1,137 @@
+Name: Kevin Mai
+CS 570 
+July 26, 2020
+Program 2
+README FILE
+
+GOAL: 
+Counts frequency of each alphabet letter (a-z, case sensitive) in all the .txt files under directory of the given path 
+and write the results to a file named as filetowrite with the implementation of multithreading where the number of threads
+is decided by the user.
+
+LOGIC: 
+A struct and global variables are used to allow threads to have access to the same data. Mutex is used to critically control
+access to resources. The program first find and store the names of all the files fulfilling the criteria to be read. The program 
+then makes sure threads have access to the inputted data. Threads are then created which then handle their assigned data and 
+count the alphabet. The program waits for the threads to finish their tasks and then prints the results to the filetowrite. 
+It then closes any resources.
+
+Most of the code is based on Assignment 0 and just rearranged to incorporate multithreading. Logic for making sure the threads
+are reading their assigned files is through the use of the variables offset, thdnumfile, start, and end. Where offset is the current
+thread number which is multiped with thdnumfile containing the number of assigned files for the thread. This dictates the starting index
+and is used for the end by adding the thdnumfile where the thread stops reading the files.
+
+RESOURCES: 
+CS 570 Piazza coure readings, videos, and notes.
+https://computing.llnl.gov/tutorials/pthreads/#Mutexes 
+
+RUNNING THE PROGRAM:
+make 				will generate testmulthreads executable file
+make clean 			removes testmulthreads executable file
+
+example:
+./testmulthreads 3 // run the testmulthreads program using 3 threads in
+					parallel, the result will be stored in the alphabetfreq[] array and written in
+					the file result.txt under result folder (Note: the instructor may vary the
+					number of threads to verify your program)
+
+RESULTS:
+Running the mulproc executable will display the results of testalphabet and testspecial in terminal. Results are also found in 
+result folder where result.txt contains the alphabet results and specialresult.txt contains the special
+results.
+
+
+TEST RESULTS:
+
+ ./testmulthreads 3
+Please enter 2 arguments only eg."./testmulthreads #_of__threads!!"
+Thread id = 140592263878400 starts processing files with index frome 0 to 9
+Thread id = 140592263878400 is processing file input_00.txt
+Thread id = 140592255485696 starts processing files with index frome 10 to 19
+Thread id = 140592255485696 is processing file input_10.txt
+Thread id = 140592247092992 starts processing files with index frome 20 to 30
+Thread id = 140592247092992 is processing file input_20.txt
+Thread id = 140592247092992 is processing file input_21.txt
+Thread id = 140592263878400 is processing file input_01.txt
+Thread id = 140592255485696 is processing file input_11.txt
+Thread id = 140592247092992 is processing file input_22.txt
+Thread id = 140592255485696 is processing file input_12.txt
+Thread id = 140592247092992 is processing file input_23.txt
+Thread id = 140592255485696 is processing file input_13.txt
+Thread id = 140592263878400 is processing file input_02.txt
+Thread id = 140592255485696 is processing file input_14.txt
+Thread id = 140592247092992 is processing file input_24.txt
+Thread id = 140592263878400 is processing file input_03.txt
+Thread id = 140592255485696 is processing file input_15.txt
+Thread id = 140592247092992 is processing file input_25.txt
+Thread id = 140592263878400 is processing file input_04.txt
+Thread id = 140592255485696 is processing file input_16.txt
+Thread id = 140592247092992 is processing file input_26.txt
+Thread id = 140592263878400 is processing file input_05.txt
+Thread id = 140592255485696 is processing file input_17.txt
+Thread id = 140592247092992 is processing file input_27.txt
+Thread id = 140592255485696 is processing file input_18.txt
+Thread id = 140592263878400 is processing file input_06.txt
+Thread id = 140592247092992 is processing file input_28.txt
+Thread id = 140592247092992 is processing file input_29.txt
+Thread id = 140592263878400 is processing file input_07.txt
+Thread id = 140592255485696 is processing file input_19.txt
+Thread id = 140592247092992 is processing file input_30.txt
+Thread id = 140592255485696 is done!
+Thread id = 140592263878400 is processing file input_08.txt
+Thread id = 140592247092992 is done!
+Thread id = 140592263878400 is processing file input_09.txt
+Thread id = 140592263878400 is done!
+The results are counted as follows :
+A -> 111804
+B -> 62436
+C -> 18612
+D -> 22308
+E -> 27324
+F -> 14124
+G -> 13596
+H -> 128436
+I -> 164340
+J -> 6600
+K -> 4752
+L -> 29040
+M -> 170808
+N -> 33000
+O -> 33924
+P -> 57948
+Q -> 792
+R -> 8712
+S -> 108240
+T -> 133716
+U -> 7128
+V -> 2904
+W -> 83952
+X -> 0
+Y -> 37356
+Z -> 0
+a -> 2861232
+b -> 494472
+c -> 747252
+d -> 1764444
+e -> 4855752
+f -> 751212
+g -> 795696
+h -> 2689632
+i -> 2421936
+j -> 28512
+k -> 396660
+l -> 1699236
+m -> 880044
+n -> 2476320
+o -> 2732268
+p -> 504900
+q -> 27984
+r -> 2168364
+s -> 2357256
+t -> 3157968
+u -> 1008480
+v -> 273900
+w -> 1001088
+x -> 46860
+y -> 693396
+z -> 12936

@@ -111,11 +111,11 @@ void alphabetlettercount(char *path, char *filetowrite, long alphabetfreq[])
 
 	for (int j = 0; j < (ALPHABETSIZE/2); j++) 
 	{	
-		fprintf(results, "%c -> %d\n", j+65, alphabetfreq[j]);
+		fprintf(results, "%c -> %ld\n", j+65, alphabetfreq[j]);
 	}
 	for (int j = 26; j < (ALPHABETSIZE); j++)
 	{
-		fprintf(results, "%c -> %d\n", j+71, alphabetfreq[j]);
+		fprintf(results, "%c -> %ld\n", j+71, alphabetfreq[j]);
 	}
 
 	// close stream and end of function

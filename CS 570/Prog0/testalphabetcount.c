@@ -25,12 +25,12 @@ void displayalphabetfreq(long charfreq[], int size)
 {
 	for(int i = 0; i < size/2; i++)   // print upper case letter frequency
 	  {
-	  	printf("%c -> %d\n", (char)(i+65), charfreq[i]);
+	  	printf("%c -> %ld\n", (char)(i+65), charfreq[i]);
 	  }
 
        	for(int i = size/2; i < size; i++)  // print lower case letter frequency
 	  {
-	  	printf("%c -> %d\n", (char)(i+65 + 6), charfreq[i]);  
+	  	printf("%c -> %ld\n", (char)(i+65 + 6), charfreq[i]);  
 	  }
 }
 
